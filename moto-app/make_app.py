@@ -1,4 +1,4 @@
-from flask import Flask, request
+codigo = '''from flask import Flask, request
 from database import get_connection, criar_tabelas
 from datetime import date
 
@@ -77,3 +77,8 @@ def corridas():
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5000)
+'''
+
+with open("app.py", "w") as f:
+    f.write(codigo)
+print("app.py criado com sucesso!")
