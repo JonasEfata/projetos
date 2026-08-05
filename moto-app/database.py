@@ -30,15 +30,27 @@ def criar_tabelas():
             criado_em     TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
     ''')
-
-    # Tabela de registros diários
+    # tabela de dias trabalhados
     cursor.execute('''
-        CREATE TABLE IF NOT EXISTS registros_diarios (
-            id          INTEGER PRIMARY KEY AUTOINCREMENT,
-            data        TEXT NOT NULL UNIQUE,
-            faturamento REAL NOT NULL,
-            km_rodados  REAL NOT NULL,
-            criado_em   TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+       CREATE TABLE IF NOT EXISTS dias (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            data TEXT NOT NULL UNIQUE,
+            km_inicial REAL,
+            km_final REAL,
+            criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    ''')
+  #Tabela de lançamentos (Entradas e saídas)
+    cursor.execute('''
+       CREATE TABLE IF NOT EXISTS lancamentos (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            dia_id INTEGER NOT NULL,
+            tipo TEXT NOT NULL,
+            categoria TEXT NOT NULL,
+            descricao TEXT,
+            valor REAL NOT NULL,
+            criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (dia_id) REFERENCES dias(id)
         )
     ''')
 
