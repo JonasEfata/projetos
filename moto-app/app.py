@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 from database import get_connection, criar_tabelas
 from datetime import date
 
@@ -12,7 +12,9 @@ CUSTO_KM_LOCACAO   = DESPESAS_FIXAS_MES / FRANQUIA_KM_MES
 
 @app.route("/")
 def index():
-    return "<h1>Moto-App!</h1><p><a href=/calculadora>Calculadora</a></p>"
+    from datetime import date
+    data_hoje = date.today().strftime('%d/%m/%Y')
+    return render_template('index.html', data_hoje=data_hoje)
 
 @app.route("/calculadora", methods=["GET", "POST"])
 def calculadora():

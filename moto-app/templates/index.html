@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+<div class="text-center mb-4">
+    <h4 class="text-muted">{{ data_hoje }}</h4>
+</div>
+
+<a href="/dia" class="btn btn-primary btn-menu">
+    📊 Registro do Dia
+</a>
+
+<a href="/calculadora" class="btn btn-success btn-menu">
+    🧮 Calculadora de Corrida
+</a>
+
+<a href="/corridas" class="btn btn-secondary btn-menu">
+    📋 Corridas Registradas
+</a>
+
+<a href="/painel" class="btn btn-warning btn-menu">
+    📈 Painel Mensal
+</a>
+{% endblock %}
